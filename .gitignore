@@ -2,3 +2,4 @@
 meine/static/img
 __pycache__/
 migrations/
+crud.py
