@@ -13,3 +13,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app, db)
 
+# # # BLUEPRINTS
+from meine.blog.views import blog_blueprint
+
+app.register_blueprint(blog_blueprint, url_prefix='/blog')

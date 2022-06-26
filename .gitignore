@@ -1,2 +1,4 @@
 .idea/
 meine/static/img
+__pycache__/
+migrations/
