@@ -20,3 +20,5 @@ class Posts(db.Model):
     content = db.Column(db.Text)
     board_id = db.Column(db.ForeignKey(Board.id))
 
+    def show_date(self):
+        return self.date_add.strftime("%D  %H:%M:%S")
