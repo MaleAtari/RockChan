@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
 
+login_manager = LoginManager()
 app = Flask(__name__)
 
 # # # CONFIG APP
@@ -15,5 +17,10 @@ Migrate(app, db)
 
 # # # BLUEPRINTS
 from meine.blog.views import blog_blueprint
+from meine.users.views import users_blueprint
 
 app.register_blueprint(blog_blueprint, url_prefix='/blog')
+app.register_blueprint(users_blueprint, url_prefix='/users')
+
+# # # LOGIN MANAGER
+login_manager.init_app(app)

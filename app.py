@@ -1,5 +1,5 @@
 from meine import app
-from meine.models import Board, Posts
+from meine.models import Board, Posts, Users
 from meine.views import *
 
 if __name__ == '__main__':
