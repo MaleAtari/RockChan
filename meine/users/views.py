@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, flash, redirect, url_for
 from meine.users.forms import LoginForm
 from meine.models import Users
-from flask_login import login_user
+from flask_login import login_user, login_required, logout_user
 
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
 
@@ -22,3 +22,9 @@ def home():
 
 
     return render_template('users/home.html', form=form)
+
+@users_blueprint.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
