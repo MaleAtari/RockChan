@@ -1,6 +1,7 @@
 from meine import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
+from flask_bcrypt import Bcrypt
 
 
 @login_manager.user_loader
@@ -9,7 +10,7 @@ def load_user(user_id):
 
 
 
-
+bcrypt = Bcrypt()
 
 class Users(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -21,12 +22,14 @@ class Users(db.Model, UserMixin):
     date_add = db.Column(db.DateTime, nullable=False, default=datetime.now)
     date_log = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
+    def __init__(self, name, password):
+        self.name = name
+        self.password = bcrypt.generate_password_hash(password)
+        self.role = 1
+
 
     def check_password(self, password):
-        if self.password == password:
-            return True
-        else:
-            return False
+        return bcrypt.check_password_hash(self.password, password)
 
     def show_date_add(self):
         return self.date_add.strftime("%D  %H:%M:%S")
@@ -55,4 +58,5 @@ class Posts(db.Model):
     board_id = db.Column(db.ForeignKey(Board.id))
 
     def show_date(self):
-        return self.date_add.strftime("%D  %H:%M:%S")
+        # return self.date_add.strftime("%D  %H:%M:%S")
+        return self.date_add.strftime("%D  %H:%M")

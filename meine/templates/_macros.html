@@ -22,6 +22,37 @@
 {% endmacro %}
 
 {% macro show_Post(post) %}
+
+
+    <div class="container my-2 bg-white bg-opacity-50 border border-secondary">
+        <div class="row">
+            <div class="col-6">
+                <p class="text-center fst-italic fs-5"> {{ post.auth }} </p>
+            </div>
+            <div class="col-6">
+                <p class="text-end"> {{ post.show_date() }}</p>
+            </div>
+        </div>
+
+        <div class="row border-bottom border-success">
+            <div class="col-2">
+            </div>
+            <div class="col-10">
+                <p class="text-center"> {{ post.content }} </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    
+{% endmacro %}
+
+{% macro show_Post2(post) %}
     <div class="container my-2">
 
         <div class="row">
