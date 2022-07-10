@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <div class="container my-2 bg-white bg-opacity-50 border border-secondary">
+
+
+    <div class="row text-center border-end border-dark">
+      <p class="fw-bold fs-5"> Zarządzanie Tablicami </p>
+
+    </div>
+
+    <div class="row border-bottom border-end border-dark">
+      <div class="col-md-6 col-12 text-center pb-2">
+        <a href="{{ url_for('users.add_board') }}" class="btn btn-primary"> Dodaj Nową Tablicę </a>
+      </div>
+
+      <div class="col-md-6 col-12 text-center pb-2">
+        <a href="{{ url_for('users.del_board') }}" class="btn btn-danger"> Usuń Tablicę </a>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  
+
+{% endblock %}

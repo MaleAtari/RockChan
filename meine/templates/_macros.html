@@ -52,37 +52,25 @@
     
 {% endmacro %}
 
-{% macro show_Post2(post) %}
-    <div class="container my-2">
+{% macro radio_Board(boards) %}
 
-        <div class="row">
+    <div class="form-check">
 
-            <div class="col-md-6 bg-success">
-
-                <h4> {{ post.auth }} </h4>
-
-            </div>
-
-            <div class="col-md-6 bg-success">
-
-                <p> {{ post.show_date() }} </p>
-
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-1">
-            </div>
-
-            <div class="col-md-10 bg-primary bg-opacity-25">
-                <p> {{ post.content }} </p>
-            </div>
-
-            <div class="col-md-1">
-            </div>
-        </div>
+        <input class="form-check-input" type="radio" name="boardRadio" value="0" id="radioBoard0" checked>
+        <label class="form-check-label fs-3" for="radioBoard0"> Nic nie usuwaj </label>
     </div>
 
+    {% for board in boards %}
+
+        <div class="form-check">
+
+        <input class="form-check-input" type="radio" name="boardRadio" value="{{ board.id }}" id="radioBoard{{board.id}}">
+        <label class="form-check-label fs-3" for="radioBoard{{board.id}}"> {{ board.name }} </label>
+        </div>
+
+
+    {% endfor %}
+    
+    
 
 {% endmacro %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="container my-2 border border-secondary">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="row my-2">
+                <div class="col-md-6 col-12 text-center">
+                    {{ form.name.label(class="form-control bg-warning bg-opacity-50") }}
+                </div>
+                <div class="col-md-6 col-12 text-center">
+                    {{ form.name(class="form-control") }}
+                </div>
+            </div>
+
+            <div class="row my-1">
+                <div class="col-md-6 col-12 text-center">
+                    {{ form.info.label(class="form-control bg-warning bg-opacity-50") }}
+                </div>
+                
+                <div class="col-md-6 col-12 text-center">
+                    {{ form.info(class="form-control") }}
+                </div>
+            </div>
+
+            <div class="row my-2">
+                <div class="col-md-6">
+                    {{ form.submit(class="btn btn-success w-100 text-center") }}
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+    </div>
+
+
+
+    
+{% endblock %}

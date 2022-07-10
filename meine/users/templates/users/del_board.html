@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "_macros.html" import radio_Board %}
+
+{% block content %}
+
+
+
+	<div class="container my-2">
+
+
+		<div class="row text-center bg-danger bg-opacity-25">
+			<h2> Wybierz Tablicę do usunięcia </h2>
+		</div>
+
+
+
+		<form action="" method="POST">
+		
+			{{ radio_Board(boards) }}
+
+			<div class="row my-3">
+				<input class="btn btn-danger" type="submit" value="USUŃ !!!">
+			</div>
+			
+		</form>
+	</div>
+
+
+
+{% endblock %}
