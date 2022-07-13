@@ -48,6 +48,10 @@ class Board(db.Model):
     info = db.Column(db.Text)
     posts = db.relationship('Posts', backref='boards')
 
+
+    def show_date(self):
+        return self.date_add.strftime("%D  %H:%M")
+
 class Posts(db.Model):
     __tablename__ = 'posts'
 

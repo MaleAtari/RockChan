@@ -1,18 +1,19 @@
 {% macro show_Board(board_id) %}
 
-<div class="container my-3">
-            <div class="row">
+<div class="container my-3 border border-dark">
+            <div class="row shadow mb-5 bg-body bg-rounded">
 
-                <div class="col-12 text-center bg-success">
-                    <a class="link-warning" href="{{ url_for('blog.board', id=board_id.id) }}"> <h2> {{ board_id.name }} </h2> </a>
+                <div class="col-12 text-center bg-primary bg-opacity-50">
+                    <a class="link-dark" href="{{ url_for('blog.board', id=board_id.id) }}"> <h2> {{ board_id.name }} </h2> </a>
                 </div>
 
                 <div class="col-md-4 bg-danger p-1">
-                    <p> obrazek </p>
+                    <a href="{{ url_for('blog.board', id=board_id.id) }}"> <img src="{{ url_for('static', filename='img/thumb2.png') }}" class="rounded mx-auto d-block" style="height: 100px;"> </a>
                 </div>
 
                 <div class="col-md-8 bg-light p-2">
                     <p> {{ board_id.info }} </p>
+                    <p class="text-end fst-italic"> Tablicę utworzono: {{ board_id.show_date() }} </p>
                 </div>
 
 
@@ -20,6 +21,9 @@
 </div>
 
 {% endmacro %}
+
+
+
 
 {% macro show_Post(post) %}
 
@@ -42,15 +46,12 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
     
 {% endmacro %}
+
+
+
+
 
 {% macro radio_Board(boards) %}
 
@@ -72,5 +73,4 @@
     {% endfor %}
     
     
-
 {% endmacro %}
