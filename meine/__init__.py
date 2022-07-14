@@ -19,7 +19,7 @@ Migrate(app, db)
 from meine.blog.views import blog_blueprint
 from meine.users.views import users_blueprint
 
-app.register_blueprint(blog_blueprint, url_prefix='/blog')
+app.register_blueprint(blog_blueprint, url_prefix='/chan')
 app.register_blueprint(users_blueprint, url_prefix='/users')
 
 # # # LOGIN MANAGER

@@ -1,9 +1,20 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
-from meine.users.forms import LoginForm, BoardForm, DelBoardForm
-from meine.models import Users, Board, db
+from meine.users.forms import LoginForm, BoardForm, DelPost
+from meine.models import Users, Board, db, Posts
 from flask_login import login_user, login_required, logout_user, current_user
 
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
+
+def edit_comment(post, new_content):
+    if post.date_edit == None:
+        post.edit_date = post.set_edit_date()
+        db.session.add(post)
+        db.session.commit()
+
+    signature = f"\n\n\nPost edytowany: {post.show_edit_date()} przez {current_user.name}"
+    post.content = str(new_content) + str(signature)
+    db.session.add(post)
+    db.session.commit()
 
 def board_list():
     default = (0, 'Nic nie usuwaj')
@@ -73,4 +84,30 @@ def del_board():
 
 
     return render_template('users/del_board.html', boards=boards)
+
+
+@users_blueprint.route('/edit/<id>', methods=['POST', 'GET'])
+@login_required
+def edit_post(id):
+    edited = Posts.query.get(id)
+    if request.method == 'POST':
+        new = request.form['editedPost']
+        edit_comment(edited, new)
+
+        return redirect(url_for('blog.board', id=edited.board_id))
+
+
+
+    return render_template('users/edit_post.html', edited=edited)
+
+@users_blueprint.route('/del/<id>', methods=['POST', 'GET'])
+@login_required
+def del_post(id):
+    deleted = Posts.query.get(id)
+    del_post = DelPost()
+    if del_post.validate_on_submit():
+        db.session.delete(deleted)
+        db.session.commit()
+        return redirect(url_for('blog.board', id=deleted.board_id))
+    return render_template('users/del_post.html', deleted=deleted, form=del_post)
 

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="container my-3" style="max-width: 1000px;">
+		<form action="" method="POST">
+			<div class="row my-1 text-center">
+				<p class="fs-3"> Edytuj Post </p>
+			</div>
+			<div class="row my-1 text-center d-flex">
+				<div class="col-md-8">
+					<div class="mb-3">
+						<textarea class="form-control" name="editedPost" rows="8" style="white-space: pre-line;"> {{ edited.content }} </textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row my-1">
+				<div class="col-md-6 col-12 bg-warning bg-opacity-50 text-center my-1">
+					<a href="{{ url_for('blog.board', id=edited.board_id) }}" class="btn btn-dark"> Nie Edytuj / COFNIJ </a>
+				</div>
+				<div class="col-md-6 col-12 bg-warning bg-opacity-50 text-center my-1">
+					<input class="btn btn-dark" type="submit" value="Edytuj" style="width:120px;"> 
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+{% endblock %}

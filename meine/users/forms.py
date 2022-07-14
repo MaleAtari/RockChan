@@ -31,4 +31,6 @@ class DelBoardForm(FlaskForm):
     menu = RadioField('Tablica do usunięcia')
     submit = SubmitField('Usuń !!!')
 
+class DelPost(FlaskForm):
+    submit = SubmitField('TAK')
 

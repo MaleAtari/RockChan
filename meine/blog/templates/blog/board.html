@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import show_Post %}
+{% from "_macros.html" import show_Post with context %}
 
 {% block content %}
 
@@ -34,7 +34,7 @@
 
                     <div class="col-md-8 text-center">
                         <h4> {{ form.text.label }} </h4>
-                        {{ form.text(class="form-control", rows=4) }}
+                        {{ form.text(class="form-control", rows=4, style="white-space: pre-wrap;") }}
                     </div>
                 </div>
 

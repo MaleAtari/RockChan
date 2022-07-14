@@ -57,6 +57,7 @@ class Posts(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     date_add = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    date_edit = db.Column(db.DateTime)
     auth = db.Column(db.String(128))
     content = db.Column(db.Text)
     board_id = db.Column(db.ForeignKey(Board.id))
@@ -64,3 +65,10 @@ class Posts(db.Model):
     def show_date(self):
         # return self.date_add.strftime("%D  %H:%M:%S")
         return self.date_add.strftime("%D  %H:%M")
+
+    def show_edit_date(self):
+        return self.date_edit.strftime("%D  %H:%M")
+
+    def set_edit_date(self):
+        self.date_edit = datetime.now()
+

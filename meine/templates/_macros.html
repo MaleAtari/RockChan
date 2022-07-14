@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="col-md-8 bg-light p-2">
-                    <p> {{ board_id.info }} </p>
+                    <p style="white-space: pre-wrap;"> {{ board_id.info }} </p>
                     <p class="text-end fst-italic"> Tablicę utworzono: {{ board_id.show_date() }} </p>
                 </div>
 
@@ -31,23 +31,37 @@
     <div class="container my-2 bg-white bg-opacity-50 border border-secondary">
         <div class="row">
             <div class="col-6">
+
                 <p class="text-center fst-italic fs-5"> {{ post.auth }} </p>
+ 
             </div>
             <div class="col-6">
                 <p class="text-end"> {{ post.show_date() }}</p>
             </div>
         </div>
 
-        <div class="row border-bottom border-success">
-            <div class="col-2">
-            </div>
-            <div class="col-10">
-                <p class="text-center"> {{ post.content }} </p>
+        <div class="row border-bottom border-success justify-content-center">
+            
+            <div class="col-10 col-md-8">
+                <p class="text-center" style="white-space: pre-wrap;"> {{ post.content }} </p>
             </div>
         </div>
+        {% if current_user.is_authenticated %}
+            <div class="row">
+                <div class="col-md-6 col-12 text-center bg-danger bg-opacity-25 my-2"> 
+                    <a href="{{ url_for('users.edit_post', id=post.id) }}" class="btn btn-danger"> Edytuj Post </a>
+                </div>
+
+                <div class="col-md-6 col-12 text-center bg-danger bg-opacity-25 my-2"> 
+                    <a href="{{ url_for('users.del_post', id=post.id) }}" class="btn btn-danger"> Usuń Post !!! </a>
+                </div>
+            </div>
+        {% endif %}
     </div>
     
 {% endmacro %}
+
+
 
 
 
