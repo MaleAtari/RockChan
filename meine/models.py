@@ -21,6 +21,7 @@ class Users(db.Model, UserMixin):
     role = db.Column(db.Integer)
     date_add = db.Column(db.DateTime, nullable=False, default=datetime.now)
     date_log = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    posts = db.relationship('Posts', backref='user')
 
     def __init__(self, name, password):
         self.name = name
@@ -36,6 +37,11 @@ class Users(db.Model, UserMixin):
 
     def show_date_log(self):
         return self.date_log.strftime("%D  %H:%M:%S")
+
+    def set_password(self, new_password):
+        self.password = bcrypt.generate_password_hash(new_password)
+
+
 
 
 
@@ -61,6 +67,7 @@ class Posts(db.Model):
     auth = db.Column(db.String(128))
     content = db.Column(db.Text)
     board_id = db.Column(db.ForeignKey(Board.id))
+    user_id = db.Column(db.ForeignKey(Users.id))
 
     def show_date(self):
         # return self.date_add.strftime("%D  %H:%M:%S")
@@ -71,4 +78,10 @@ class Posts(db.Model):
 
     def set_edit_date(self):
         self.date_edit = datetime.now()
+
+    def check_owner(self):
+        if self.user_id:
+            return True
+        else:
+            return False
 

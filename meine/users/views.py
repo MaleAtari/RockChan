@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, request
-from meine.users.forms import LoginForm, BoardForm, DelPost
+from flask import Blueprint, render_template, flash, redirect, url_for, request, flash
+from meine.users.forms import LoginForm, BoardForm, DelPost, ChangePass
 from meine.models import Users, Board, db, Posts
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -111,3 +111,22 @@ def del_post(id):
         return redirect(url_for('blog.board', id=deleted.board_id))
     return render_template('users/del_post.html', deleted=deleted, form=del_post)
 
+@users_blueprint.route('admin/account', methods=['POST', 'GET'])
+@login_required
+def change_pass():
+    form = ChangePass()
+    c_user = Users.query.get(current_user.id)
+
+    if form.validate_on_submit():
+        if not c_user.check_password(form.old_pass.data):
+            flash('Stare hasło jest niepoprawne')
+        else:
+
+            print(form.confirm_pass.errors)
+            c_user.set_password(form.confirm_pass.data)
+            db.session.add(c_user)
+            db.session.commit()
+            flash('Ustawiono nowe hasło')
+
+
+    return render_template('users/change_pass.html', form=form)

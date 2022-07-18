@@ -3,7 +3,7 @@
 {% block content %}
 
 
-  <div class="container my-2 bg-white bg-opacity-50 border border-secondary">
+  <div class="container my-2 bg-white bg-opacity-50 border border-secondary main-width">
 
 
     <div class="row text-center border-end border-dark">
@@ -22,6 +22,21 @@
 
     </div>
 
+
+
+
+  </div>
+
+  <div class="container my-2 bg-white bg-opacity-50 border border-secondary main-width">
+
+    <div class="row text-center border-end border-dark">
+      <p class="fw-bold fs-5"> Zarządzanie Kontem </p>
+
+    </div>
+    <div class="row border-bottom border-end border-dark">
+      <div class="col-md-6 col-12 text-center pb-2">
+        <a href="{{ url_for('users.change_pass') }}" class="btn btn-primary"> Zmień hasło </a>
+      </div>
   </div>
 
 

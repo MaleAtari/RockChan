@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="container my-3 bg-white bg-opacity-50 main-width">
+		<form action="" method="POST">
+			{{ form.hidden_tag() }}
+			<div class="container my-2">
+				<div class="col-md6 col-12 my-1">
+					{{ form.old_pass.label(class="form-label")}}
+				</div>
+				<div class="col-md6 col-12 my-1">
+					{{ form.old_pass(class="form-control") }}
+				</div>
+			</div>
+
+			<div class="container my-2">
+				<div class="col-md6 col-12 my-1">
+					{{ form.new_pass.label(class="form-label") }}
+				</div>
+				<div class="col-md6 col-12 my-1">
+					{{ form.new_pass(class="form-control") }}
+				</div>
+			</div>
+
+			<div class="container my-2">
+				<div class="col-md6 col-12 my-1">
+					{{ form.confirm_pass.label(class="form-label") }}
+				</div>
+				<div class="col-md6 col-12 my-1">
+					{{ form.confirm_pass(class="form-control") }}
+				</div>
+			</div>
+
+			<div class="container my-2">
+				<div class="row d-flex justify-content-center">
+					{{ form.submit(class="btn btn-danger", style="width: 250px;") }}
+				</div>
+			</div>
+
+
+		</form>
+
+		{% for error in form.confirm_pass.errors %}
+			<div class="alert alert-danger">
+				{{ error }}
+			</div>
+		{% endfor %}
+
+		{% with messages = get_flashed_messages() %}
+
+			{% if messages %}
+				<div class="container my-2">
+					{% for msg in messages %}
+						<div class="alert alert-danger">
+							{{ msg }}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+
+		{% endwith %}
+	</div>
+
+{% endblock %}

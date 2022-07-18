@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p> home</p>
-<p> test
-	tekstu
-	z enterami
-</p>
+	<div class="container my-3 main-width bg-white bg-opacity-50">
+		<div class="row text-center">
+			<h2> Witaj na RockChanie </h2>
+		</div>
+		<p> Chan służy wymianie informacji o naszym zakładzie pracy, wspólnej rozmowie na różne tematy. </p>
+		<div class="row my-3 d-flex justify-content-center">
+			<div class="col-12 my-1 text-center">
+				<h5> Kliknij na Kłębek Wełny aby Wejść !!! </h3>
+			</div>
+			<div class="col12 my-1 d-flex justify-content-center">
+				<a href="{{ url_for('blog.home') }}"> 
+					<img src="{{ url_for('static', filename='img/wool3.jpg') }}" class="rounded mx-auto d-block" alt="kłebek wełny" style="max-width: 400px; max-height: 400px;">
+				</a>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

@@ -29,10 +29,20 @@
 
 
     <div class="container my-2 bg-white bg-opacity-50 border border-secondary">
-        <div class="row">
-            <div class="col-6">
+    
+            
+                {% if post.check_owner() %}
 
-                <p class="text-center fst-italic fs-5"> {{ post.auth }} </p>
+         <div class="row bg-warning bg-opacity-50">        
+            <div class="col-6">    
+                    <p class="text-center text-danger fst-italic fs-5"> {{ post.auth }} </p>
+
+                {% else %}
+        <div class="row">        
+            <div class="col-6">
+                    <p class="text-center fst-italic fs-5"> {{ post.auth }} </p>
+                
+                {% endif %}
  
             </div>
             <div class="col-6">
