@@ -3,5 +3,4 @@ meine/static/img
 __pycache__/
 migrations/
 crud.py
-./meine/baza.sqlite
 meine/baza.sqlite

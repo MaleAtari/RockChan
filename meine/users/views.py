@@ -65,7 +65,7 @@ def add_board():
         db.session.add(new_board)
         db.session.commit()
 
-        return redirect(url_for('blog.home'))
+        return redirect(url_for('chan.home'))
 
     return render_template('users/add_board.html', form=form)
 
@@ -94,7 +94,7 @@ def edit_post(id):
         new = request.form['editedPost']
         edit_comment(edited, new)
 
-        return redirect(url_for('blog.board', id=edited.board_id))
+        return redirect(url_for('chan.board', id=edited.board_id))
 
 
 
@@ -108,7 +108,7 @@ def del_post(id):
     if del_post.validate_on_submit():
         db.session.delete(deleted)
         db.session.commit()
-        return redirect(url_for('blog.board', id=deleted.board_id))
+        return redirect(url_for('chan.board', id=deleted.board_id))
     return render_template('users/del_post.html', deleted=deleted, form=del_post)
 
 @users_blueprint.route('admin/account', methods=['POST', 'GET'])

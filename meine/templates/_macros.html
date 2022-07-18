@@ -4,11 +4,11 @@
             <div class="row shadow mb-5 bg-body bg-rounded">
 
                 <div class="col-12 text-center bg-primary bg-opacity-50">
-                    <a class="link-dark" href="{{ url_for('blog.board', id=board_id.id) }}"> <h2> {{ board_id.name }} </h2> </a>
+                    <a class="link-dark" href="{{ url_for('chan.board', id=board_id.id) }}"> <h2> {{ board_id.name }} </h2> </a>
                 </div>
 
                 <div class="col-md-4 bg-danger p-1">
-                    <a href="{{ url_for('blog.board', id=board_id.id) }}"> <img src="{{ url_for('static', filename='img/thumb2.png') }}" class="rounded mx-auto d-block" style="height: 100px;"> </a>
+                    <a href="{{ url_for('chan.board', id=board_id.id) }}"> <img src="{{ url_for('static', filename='img/thumb2.png') }}" class="rounded mx-auto d-block" style="height: 100px;"> </a>
                 </div>
 
                 <div class="col-md-8 bg-light p-2">
