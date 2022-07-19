@@ -58,12 +58,16 @@
         </div>
         {% if current_user.is_authenticated %}
             <div class="row">
-                <div class="col-md-6 col-12 text-center bg-danger bg-opacity-25 my-2"> 
+                <div class="col-md-4 col-6 text-center bg-danger bg-opacity-25 my-2"> 
                     <a href="{{ url_for('users.edit_post', id=post.id) }}" class="btn btn-danger"> Edytuj Post </a>
                 </div>
 
-                <div class="col-md-6 col-12 text-center bg-danger bg-opacity-25 my-2"> 
+                <div class="col-md-4 col-6 text-center bg-danger bg-opacity-25 my-2"> 
                     <a href="{{ url_for('users.del_post', id=post.id) }}" class="btn btn-danger"> Usuń Post !!! </a>
+                </div>
+
+                <div class="col-md-4 col-6 text-center bg-danger bg-opacity-25 my-2"> 
+                    <a href="{{ url_for('users.move_post', id=post.id) }}" class="btn btn-danger"> Przenieś </a>
                 </div>
             </div>
         {% endif %}

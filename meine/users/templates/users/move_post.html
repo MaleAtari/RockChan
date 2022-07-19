@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import radio_Board %}
+
+{% block content %}
+
+	<div class="container my-3 bg-white bg-opacity-50 main-width">
+		<div class="row text-center">
+			<h3> Wybierz Tablicę do której chcesz przenieść Posta </h3>
+		</div>
+
+		{% with messages = get_flashed_messages() %}
+
+			{% if messages %}
+				<div class="container my-2">
+					{% for msg in messages %}
+						<div class="alert alert-warning">
+							{{ msg }}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+
+		{% endwith %}
+
+
+		<form action="" method="POST">
+		
+			{{ radio_Board(boards) }}
+
+			<div class="row my-3">
+				<input class="btn btn-warning" type="submit" value="Przenieś">
+			</div>
+			
+		</form>
+
+		
+	</div>
+
+{% endblock %}

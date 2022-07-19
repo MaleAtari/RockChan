@@ -24,3 +24,4 @@ app.register_blueprint(users_blueprint, url_prefix='/users')
 
 # # # LOGIN MANAGER
 login_manager.init_app(app)
+login_manager.login_view = 'no_enter'

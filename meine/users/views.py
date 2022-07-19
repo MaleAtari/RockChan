@@ -130,3 +130,18 @@ def change_pass():
 
 
     return render_template('users/change_pass.html', form=form)
+
+@users_blueprint.route('admin/move/<id>', methods=['POST', 'GET'])
+@login_required
+def move_post(id):
+    moved = Posts.query.get(id)
+    boards = Board.query.all()
+    if request.method == 'POST':
+        target = Board.query.get(request.form['boardRadio'])
+        moved.board_id = target.id
+        db.session.add(moved)
+        db.session.commit()
+        flash('Post został przeniesiony')
+        return redirect(url_for('chan.board', id=moved.board_id))
+
+    return render_template('users/move_post.html', moved=moved, boards=boards)
