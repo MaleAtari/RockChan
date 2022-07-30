@@ -52,6 +52,7 @@ class Board(db.Model):
     name = db.Column(db.String(256))
     date_add = db.Column(db.DateTime, nullable=False, default=datetime.now)
     info = db.Column(db.Text)
+    closed = db.Column(db.Boolean, default=False)
     posts = db.relationship('Posts', backref='boards')
 
 

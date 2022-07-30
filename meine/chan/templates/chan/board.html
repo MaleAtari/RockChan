@@ -32,7 +32,11 @@
 
                     <div class="col-md-4 text-center">
                         <h4> {{ form.name.label }} </h4>
-                        {{ form.name(class="form-control") }}
+                        {% if current_user.is_active %}
+                            {{ form.name(class="form-control", value=current_user.name, default=current_user.name) }}
+                        {% else %}
+                            {{ form.name(class="form-control") }}
+                        {% endif %}
                     </div>
                 
 

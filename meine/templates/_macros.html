@@ -81,12 +81,12 @@
 
 
 
-{% macro radio_Board(boards) %}
+{% macro radio_Board(boards, text) %}
 
     <div class="form-check">
 
         <input class="form-check-input" type="radio" name="boardRadio" value="0" id="radioBoard0" checked>
-        <label class="form-check-label fs-3" for="radioBoard0"> Nic nie usuwaj </label>
+        <label class="form-check-label fs-3" for="radioBoard0"> {{ text }} </label>
     </div>
 
     {% for board in boards %}

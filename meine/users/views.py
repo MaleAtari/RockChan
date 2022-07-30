@@ -75,6 +75,8 @@ def del_board():
     boards = Board.query.all()
 
     if request.method == 'POST':
+        if request.form['boardRadio'] == '0':
+            return redirect(url_for('users.admin'))
         deleted = Board.query.get(request.form['boardRadio'])
         db.session.delete(deleted)
         db.session.commit()
@@ -137,6 +139,8 @@ def move_post(id):
     moved = Posts.query.get(id)
     boards = Board.query.all()
     if request.method == 'POST':
+        if request.form['boardRadio'] == '0':
+            return redirect(url_for('chan.board', id=moved.board_id))
         target = Board.query.get(request.form['boardRadio'])
         moved.board_id = target.id
         db.session.add(moved)
